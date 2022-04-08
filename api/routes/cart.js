@@ -20,9 +20,10 @@ router.post("/", verifyToken, async (req, res) => {
   }
 });
 
-//UPDATE
+//UPDATE cette methode permet de modifier un seul element a la fois dans le panier
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   try {
+    //permet de retourner l'element modifier
     const updatedCart = await Cart.findByIdAndUpdate(
       req.params.id,
       {
@@ -46,7 +47,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
-//GET USER CART
+//GET USER CART permet a un utilisateur de voir le contenu du panier
 router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
   try {
     const cart = await Cart.findOne({ userId: req.params.userId });
@@ -56,7 +57,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
-// //GET ALL
+// //GET ALL ici on retourne tout les elements contenu dans le panier
 
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
   try {

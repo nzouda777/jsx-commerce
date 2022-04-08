@@ -7,7 +7,7 @@ const {
 
 const router = require("express").Router();
 
-//CREATE
+//CREATE créer une commande
 
 router.post("/", verifyToken, async (req, res) => {
   const newOrder = new Order(req.body);
@@ -20,7 +20,7 @@ router.post("/", verifyToken, async (req, res) => {
   }
 });
 
-//UPDATE
+//UPDATE modifier une commande
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     const updatedOrder = await Order.findByIdAndUpdate(
@@ -36,7 +36,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-//DELETE
+//DELETE supprimer une commande
 router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     await Order.findByIdAndDelete(req.params.id);
@@ -46,7 +46,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-//GET USER ORDERS
+//GET USER ORDERS ici on retourne ce qu'un seul utilisateur a commandé
 router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
   try {
     const orders = await Order.find({ userId: req.params.userId });
@@ -56,7 +56,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
-// //GET ALL
+// //GET ALL ici on retourne toute les commandes des utilisateurs
 
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
   try {

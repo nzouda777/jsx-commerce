@@ -1,0 +1,11 @@
+bon deja le model ici fait reference a la definition de la base de donnée sa structure et ses detail
+
+les fichiers cart, Order, Product, User permettent ici de definit les tables et les differents champs dans mongodb atlas
+methodes definit dans ces fichiers vont dynamiquement créer les tables lors de l'executon du code
+
+
+-> Mongoose est une bibliothèque de programmation JavaScript orientée objet qui crée 
+une connexion entre MongoDB et le framework d'application Web Express
+
+-> Tout dans Mongoose commence par un schéma. Chaque schéma correspond à une collection MongoDB
+ et définit la forme des documents au sein de cette collection.
